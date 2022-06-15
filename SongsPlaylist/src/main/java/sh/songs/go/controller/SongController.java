@@ -46,16 +46,6 @@ public class SongController {
 		return ResponseEntity.ok().body(song);
 	}
 	
-	/*
-	 * @GetMapping("/songs/{songName}") public ResponseEntity<Song>
-	 * getSongBySongName(@PathVariable(value = "songName") String songName){
-	 * ResponseEntity<?> response=new
-	 * ResponseEntity<>(getErrorMessage,HttpStatus.FOUND); Song song =
-	 * service .getSongBySongName(songName); if(song!=null)
-	 * response=ResponseEntity.ok("Song name is found :"+ song);
-	 * 
-	 * return response; }
-	 */
 
 	@PostMapping("/songs")
 	public Song createSong(@RequestBody Song song) {
@@ -67,7 +57,7 @@ public class SongController {
 	public ResponseEntity<Song> updateSong(@PathVariable(value = "id") Long songId,
 			 @RequestBody Song songDetails) throws ResourceNotFoundException {
 		Song song = repo.findById(songId)
-				.orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + songId));
+				.orElseThrow(() -> new ResourceNotFoundException("Song not found for this id :: " + songId));
 
 		song.setMoodSong(songDetails.getMoodSong());
 		song.setSingerName(songDetails.getSingerName());
@@ -80,7 +70,7 @@ public class SongController {
 	public Map<String, Boolean> deleteSong(@PathVariable(value = "id") Long songId)
 			throws ResourceNotFoundException {
 		Song song = repo.findById(songId)
-				.orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + songId));
+				.orElseThrow(() -> new ResourceNotFoundException("Song not found for this id :: " + songId));
 
 		repo.delete(song);
 		Map<String, Boolean> response = new HashMap<>();
