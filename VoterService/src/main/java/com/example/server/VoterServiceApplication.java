@@ -1,13 +1,14 @@
-package sh.songs.go;
+package com.example.server;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SongsPlaylistApplication {
+public class VoterServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SongsPlaylistApplication.class, args);
+		SpringApplication.run(VoterServiceApplication.class, args);
+		System.out.println("VoterService Application started");
 	}
 
 }
